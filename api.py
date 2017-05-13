@@ -1100,14 +1100,12 @@ class CxlXsipOrderForm(forms.ModelForm):
 
 # every soap query to bse must have wsa headers set 
 def soap_set_wsa_headers(method_url, svc_url):
-	from zeep import xsd
-	header = xsd.Element(None, xsd.ComplexType([
-        xsd.Element('{http://www.w3.org/2005/08/addressing}Action', xsd.String()),
-        xsd.Element('{http://www.w3.org/2005/08/addressing}To', xsd.String())
+	header = zeep.xsd.Element(None, zeep.xsd.ComplexType([
+        zeep.xsd.Element('{http://www.w3.org/2005/08/addressing}Action', zeep.xsd.String()),
+        zeep.xsd.Element('{http://www.w3.org/2005/08/addressing}To', zeep.xsd.String())
         ])
     )
 	header_value = header(Action=method_url, To=svc_url)
-	# print header_value
 	return header_value
 
 
