@@ -247,7 +247,6 @@ class EquityAsset(models.Model):
     Stores a stock's details
     Like Reliance, Infosys, TCS etc
     '''
-    exchange = models.ForeignKey(Exchange, on_delete=models.PROTECT, blank=True, null=True)
     name = models.CharField(max_length=200)
     market_cap = models.FloatField(blank=True, null=True)  # in Rs cr
     cap_type = models.CharField(max_length=50, blank=True)
