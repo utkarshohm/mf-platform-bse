@@ -175,7 +175,7 @@ def calculate_order_date(self, order_dt):
     if order_dt.hour >= 15:
         order_dt += timedelta(days=1)
     order_d = order_dt.date()
-    lines = open('transactions/management/commands/market_dates.csv', 'r').read().splitlines()
+    lines = open('requirements/market_dates.csv', 'r').read().splitlines()
     for line in lines:
         market_date = date(*(strptime(line.strip(), '%d/%m/%y')[0:3]))
         if market_date >= order_d:
