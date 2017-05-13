@@ -28,10 +28,12 @@ Meat of the library is in 2 files:
 
 ### Supporting code
 #### Models
-3 key data structures are necessary for a mutual fund transaction platform. Regulations require to carefully archive this data for 5 years. I have django models to create them.
-* `funds.py` stores mutual fund schemes' official SID details, ratings, returns, owner, rta, managers, benchmark indices, portfolio and history 
-* `users.py` stores kyc, bank, fatca and mandate details for each investor
-* `transactions.py` stores each purcahse/redeem transaction's key details incl status, datetime stamps, payment details,  corresponding API queries made to BSEStarMF and corresponding responses received
+3 key data structures are necessary for a mutual fund transaction platform. Regulations require to carefully archive this data for 5 years. 
+* `funds.py` stores mutual fund schemes' official SID details, ratings, returns, owner, rta, managers, benchmark indices, portfolio and history.
+* `graphs.py` stores time series data of funds and indices (like BSE Sensex, SBI fixed deposit rate), at daily frequency. 
+* `users.py` stores kyc, bank, fatca and mandate details for each investor.
+* `transactions.py` stores each purcahse/redeem transaction's key details incl status, datetime stamps, payment details,  corresponding API queries made to BSEStarMF and corresponding responses received.
+You can find more detailed models in a [separate repo](https://github.com/utkarshohm/mutual-fund-models) with discussion on [choice of database](https://github.com/utkarshohm/mutual-fund-models#models) for these models. Note that several models in this repo are not directly used for placing transactions through BSE but are required for a mutual fund platform.
 
 #### Requirements
 ##### Necessary
@@ -40,8 +42,8 @@ Meat of the library is in 2 files:
 * [selenium](https://github.com/SeleniumHQ/selenium) used to automate browsing of web portal
 * [pyvirtualdisplay](https://github.com/ponty/PyVirtualDisplay) used to create a virtual display necessary for a headless browser
 ##### Optional
-* django - for models and management commands. Note that you DON'T need it. I have kept parts of django because I used it originally in my website. Feel free to remove it or replace it with 
-* [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) used with selenium for browsing using chrome browser
+* django, mysql and mongo - for models and management commands. Note that you DON'T need it. I have kept parts of django because I used it originally in my website. Feel free to remove it or replace it with 
+* [chromedriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) used with selenium for browsing using chrome browser. Its executable must be downloaded separately.
 
 #### How to use the API and web crawler?
 These 2 files show how to use `api.py` and `web.py` in your code. I have used [django management commands](http://janetriley.net/2014/11/quick-how-to-custom-django-management-commands.html) for easy demonstration, but treat them as simple python files  
