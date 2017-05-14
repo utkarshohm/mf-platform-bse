@@ -1,4 +1,4 @@
-# mutual-fund-platform
+# mf-platform-bse
 Python library to programmaticaly purcahse/redeem mutual funds in India using the Bombay Stock Exchange StarMF platform's API and web portal
 
 ## Context
@@ -49,6 +49,10 @@ You can find more detailed models in a [separate repo](https://github.com/utkars
 These 2 files show how to use `api.py` and `web.py` in your code. I have used [django management commands](http://janetriley.net/2014/11/quick-how-to-custom-django-management-commands.html) for easy demonstration, but treat them as simple python files  
 * `transact_using_api.py` shows how to use the api functions to transact
 * `update_transaction_status.py` shows how to use api functions and web crawling to periodically update status of transactions. It should be run using a cron job on every day that the market is open, at 10:05 am (after market opens), 3:05 pm (after market closes for MF transactions) and 6:05 pm (after transactions have been processed).
+
+## Related repos
+* [Historical NAV/price/time-series data of mutual funds and popular benchmark indices in India](https://github.com/utkarshohm/mf-nav-data)
+* [Models (data structures) required to make a mutual fund investment platform](https://github.com/utkarshohm/mf-models)
 
 ## Need help setting this up or want to contribute?
 Feel free to raise an issue and I will get back asap
